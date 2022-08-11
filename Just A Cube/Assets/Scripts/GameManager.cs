@@ -78,11 +78,17 @@ public class GameManager : MonoBehaviour
 			}
 
 			// Check for input to pause or resume the game.
-			if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+			if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !gameHasEnded)
 				if (isPaused)
 					ResumeGame();
 				else
 					PauseGame();
+			
+			if (Input.GetKeyDown(KeyCode.Escape) && gameHasEnded)
+				ReturnToMenu();
+
+			if (Input.GetKeyDown(KeyCode.R) && gameHasEnded)
+				RestartGame();
 		}
 	}
 
