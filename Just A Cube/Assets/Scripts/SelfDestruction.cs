@@ -13,7 +13,7 @@ public class SelfDestruction : MonoBehaviour
 	// Update is called once per frame
 	private void Update()
     {
-		if ((player.position.z - transform.position.z) > 7f)
+		if ((player.position.z - transform.position.z) > 7f || BlockSpawner.forcedDestroy)
 			Destroy(gameObject);
     }
 }

@@ -934,6 +934,7 @@ MonoBehaviour:
   - {fileID: 1523811816}
   - {fileID: 1416892111}
   - {fileID: 781515402}
+  player: {fileID: 1876980912}
   obstaclePrefab: {fileID: 2032955535840228103, guid: 5b626c98ca3700445838a5959d39e4a5, type: 3}
   scoreCheckPrefab: {fileID: 937282291}
   timeBetweenPatterns: 2
