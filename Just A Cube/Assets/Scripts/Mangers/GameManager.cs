@@ -25,9 +25,13 @@ public class GameManager : MonoBehaviour
 	public int scoreThreshold = 15;
 	public float timeBetweenTutor = 3f;
 
-	bool gameHasEnded = false;
-	bool tutorial = false;
-	public static bool isPaused = false;
+	private bool gameHasEnded = false;
+	private bool tutorial = false;
+	private bool directionChosen;
+	public static bool isPaused { get; private set; } = false;
+
+	private Vector2 touchStartPos;
+	private Vector2 touchSwipeDirection;
 
 	private void Awake()
 	{
@@ -77,18 +81,45 @@ public class GameManager : MonoBehaviour
 				scoreText.SetActive(true);
 			}
 
-			// Check for input to pause or resume the game.
-			if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !gameHasEnded)
-				if (isPaused)
-					ResumeGame();
-				else
-					PauseGame();
+			//// Check for input to pause or resume the game, on PC.
+			//if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !gameHasEnded)
+			//	if (isPaused)
+			//		ResumeGame();
+			//	else
+			//		PauseGame();
 			
-			if (Input.GetKeyDown(KeyCode.Escape) && gameHasEnded)
-				ReturnToMenu();
+			//if (Input.GetKeyDown(KeyCode.Escape) && gameHasEnded)
+			//	ReturnToMenu();
 
-			if (Input.GetKeyDown(KeyCode.R) && gameHasEnded)
-				RestartGame();
+			//if (Input.GetKeyDown(KeyCode.R) && gameHasEnded)
+			//	RestartGame();
+
+			// Check for input to pause or resume the game, on Mobile Devices.
+			if (Input.touchCount > 0)
+			{
+				Touch touch = Input.GetTouch(0);
+				
+				switch (touch.phase)
+				{
+					case TouchPhase.Began:
+						touchStartPos = touch.position;
+						touchSwipeDirection = Vector2.zero;
+						directionChosen = false;
+						break;
+
+					case TouchPhase.Moved:
+						touchSwipeDirection = touch.position - touchStartPos;
+						Debug.Log("Touch Direction: " + touchSwipeDirection);
+						break;
+
+					case TouchPhase.Ended:
+						directionChosen = true;
+						break;
+				}
+			}
+
+			if (directionChosen && touchSwipeDirection.y > 350f)
+				PauseGame();
 		}
 	}
 

@@ -26,10 +26,20 @@ public class PlayerMovement : MonoBehaviour
 		player.AddForce(0, 0, forwardForce * Time.deltaTime);
 		//Debug.Log(sidewaysForce);
 
-		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-			player.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+		//if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+		//	player.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
-		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-			player.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+		//if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+		//	player.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+	}
+
+	public void OnHoldLeft()
+	{
+		player.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+	}
+
+	public void OnHoldRight()
+	{
+		player.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 	}
 }
