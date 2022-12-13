@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Net.Sockets;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private GameObject gameOverScreen;
 	[SerializeField] private GameObject pauseScreen;
 
-	TextMeshProUGUI scoreTMP;
+	private TextMeshProUGUI scoreTMP;
+	private RectTransform centerPanel;
 
 	// Fields.
 	public int scoreThreshold = 15;
@@ -39,8 +41,9 @@ public class GameManager : MonoBehaviour
 		spawner = GameObject.FindWithTag("Chooser").GetComponent<BlockSpawner>();
 		
 		scoreText = GameObject.FindWithTag("Score");
-		scoreTextAnim = GameObject.FindWithTag("Score").GetComponent<Animator>();
+		scoreTextAnim = scoreText.GetComponent<Animator>();
 		scoreTMP = scoreText.GetComponent<TextMeshProUGUI>();
+		centerPanel = GameObject.Find("Center Panel").GetComponent<RectTransform>();
 	}
 
 	private void Start()
@@ -77,9 +80,7 @@ public class GameManager : MonoBehaviour
 			IncreaseDifficulty();
 
 			if (Time.timeSinceLevelLoad > 2f && !scoreText.activeInHierarchy)
-			{
 				scoreText.SetActive(true);
-			}
 
 			//// Check for input to pause or resume the game, on PC.
 			//if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !gameHasEnded)
@@ -98,27 +99,29 @@ public class GameManager : MonoBehaviour
 			if (Input.touchCount > 0)
 			{
 				Touch touch = Input.GetTouch(0);
-				
-				switch (touch.phase)
-				{
-					case TouchPhase.Began:
-						touchStartPos = touch.position;
-						touchSwipeDirection = Vector2.zero;
-						directionChosen = false;
-						break;
+				Vector2 localTouchPos = centerPanel.transform.InverseTransformPoint(touch.position);
 
-					case TouchPhase.Moved:
-						touchSwipeDirection = touch.position - touchStartPos;
-						Debug.Log("Touch Direction: " + touchSwipeDirection);
-						break;
+				if (centerPanel.rect.Contains(localTouchPos))
+					switch (touch.phase)
+					{
+						case TouchPhase.Began:
+							touchStartPos = touch.position;
+							touchSwipeDirection = Vector2.zero;
+							directionChosen = false;
+							break;
 
-					case TouchPhase.Ended:
-						directionChosen = true;
-						break;
-				}
+						case TouchPhase.Moved:
+							touchSwipeDirection = touch.position - touchStartPos;
+							Debug.Log("Touch Direction: " + touchSwipeDirection);
+							break;
+
+						case TouchPhase.Ended:
+							directionChosen = true;
+							break;
+					}
 			}
 
-			if (directionChosen && touchSwipeDirection.y > 350f)
+			if (!gameHasEnded && !isPaused && directionChosen && touchSwipeDirection.y > 350f)
 				PauseGame();
 		}
 	}
@@ -167,7 +170,7 @@ public class GameManager : MonoBehaviour
 		FindObjectOfType<LoadNextLevel>().Load("Scenes/Menu");
 	}
 
-	void IncreaseDifficulty()
+	private void IncreaseDifficulty()
 	{
 		if (col.score >= scoreThreshold && spawner.timeBetweenPatterns > 0.8f)
 		{
@@ -198,14 +201,12 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	IEnumerator PlayTutorial()
+	private IEnumerator PlayTutorial()
 	{
 		if (Time.timeSinceLevelLoad > 3f && !moveTutor.activeInHierarchy)
 			moveTutor.SetActive(true);
 
-		if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) ||
-			Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
-			&& moveTutor.activeInHierarchy && !cameraTutor.activeInHierarchy)
+		if (Input.touchCount > 0 && moveTutor.activeInHierarchy && !cameraTutor.activeInHierarchy)
 		{
 			yield return new WaitForSeconds(1f);
 
@@ -216,7 +217,7 @@ public class GameManager : MonoBehaviour
 			cameraTutor.SetActive(true);
 		}
 
-		if (Input.GetKeyDown(KeyCode.V) && cameraTutor.activeInHierarchy)
+		if (Input.touchCount > 0 && cameraTutor.activeInHierarchy)
 		{
 			yield return new WaitForSeconds(1f);
 			

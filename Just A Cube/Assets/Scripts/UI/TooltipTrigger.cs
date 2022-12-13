@@ -5,11 +5,13 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 {
 	public void OnPointerEnter(PointerEventData eventData)
 	{
-		FindObjectOfType<Options>().Invoke("ShowTooltip", 0.5f);
+		//FindObjectOfType<Options>().Invoke("ShowTooltip", 0.5f);
+		Debug.Log("Tooltip shown.");
 	}
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
-		FindObjectOfType<Options>().HideTooltip();
+		//FindObjectOfType<Options>().HideTooltip();
+		Debug.Log("Tooltip hid.");
 	}
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 public class Menu : MonoBehaviour
 {
 	// Static fields.
-	public static Resolution[] resolutionArr;
 	public static Sound theme;
+	//public static Resolution[] resolutionArr;
 
-	static bool isSet = false;  // We only need to get the array once when the game started.
+	public static bool isSet { get; private set; } = false;  // We only need to get the array once when the game started.
 
 	public void Start()
 	{
@@ -18,7 +18,7 @@ public class Menu : MonoBehaviour
 
 		if (!isSet)
 		{
-			resolutionArr = Screen.resolutions;
+			//resolutionArr = Screen.resolutions;
 
 			theme = Array.Find(AudioManager.instance.sounds, sound => sound.name == "Theme");
 

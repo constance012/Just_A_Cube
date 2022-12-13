@@ -13,16 +13,16 @@ public class Options : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI volumeText;
 
 	[SerializeField] private TMP_Dropdown graphics;
-	[SerializeField] private TMP_Dropdown resolution;
+	//[SerializeField] private TMP_Dropdown resolution;
 
-	[SerializeField] private Toggle fullscreen;
+	//[SerializeField] private Toggle fullscreen;
 
-	[SerializeField] private GameObject tooltipButton;
+	//[SerializeField] private GameObject tooltipButton;
+	//[SerializeField] private GameObject tooltip;
 	[SerializeField] private GameObject confirmResetPanel;
-	[SerializeField] private GameObject tooltip;
 
 	// Fields.
-	int fullScreenIndex;
+	//int fullScreenIndex;
 
 	private void Awake()
 	{
@@ -33,39 +33,33 @@ public class Options : MonoBehaviour
 		volumeText = GameObject.Find("Volume").GetComponent<TextMeshProUGUI>();
 
 		graphics = GameObject.Find("Graphics Dropdown").GetComponent<TMP_Dropdown>();
-		resolution = GameObject.Find("Resolution Dropdown").GetComponent<TMP_Dropdown>();
+		//resolution = GameObject.Find("Resolution Dropdown").GetComponent<TMP_Dropdown>();
 
-		fullscreen = GameObject.Find("Fullscreen Toggle").GetComponent<Toggle>();
+		//fullscreen = GameObject.Find("Fullscreen Toggle").GetComponent<Toggle>();
 
-		tooltipButton = GameObject.Find("Tooltip Trigger");
+		//tooltipButton = GameObject.Find("Tooltip Trigger");
+		//tooltip = GameObject.Find("Tooltip");
 		confirmResetPanel = GameObject.Find("Confirm Reset");
-		tooltip = GameObject.Find("Tooltip");
 	}
 
 	private void Start()
 	{
 		confirmResetPanel.SetActive(false);
-		tooltip.SetActive(false);
+		//tooltip.SetActive(false);
 
-		SetUpResoDropdown();
-		resolution.RefreshShownValue();
+		//SetUpResoDropdown();
+		//resolution.RefreshShownValue();
 
 		controlSensi.value = PlayerPrefs.GetFloat("ControlSensitivity", 40f);
 		volume.value = PlayerPrefs.GetFloat("ThemeVolume", 1f);
 		
 		graphics.value = PlayerPrefs.GetInt("Graphics", 2);  // Default graphics is high.
 
-		resolution.value = PlayerPrefs.GetInt("Resolution", 7);  // Default resolution is 1280 x 720 windowed.
+		//resolution.value = PlayerPrefs.GetInt("Resolution", 7);  // Default resolution is 1280 x 720 windowed.
 		
-		fullscreen.isOn = PlayerPrefs.GetInt("Fullscreen", 0) == 1 ? true : false;  // This will invoke the bounded method too.
+		//fullscreen.isOn = PlayerPrefs.GetInt("Fullscreen", 0) == 1 ? true : false;  // This will invoke the bounded method too.
 		
-		resolution.interactable = !fullscreen.isOn;
-	}
-
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.E))
-			fullscreen.isOn = !fullscreen.isOn;
+		//resolution.interactable = !fullscreen.isOn;
 	}
 
 	public void BackToMenu()
@@ -73,15 +67,15 @@ public class Options : MonoBehaviour
 		FindObjectOfType<LoadNextLevel>().Load("Scenes/Menu");
 	}
 
-	public void ShowTooltip()
-	{
-		tooltip.SetActive(true);
-	}
+	//public void ShowTooltip()
+	//{
+	//	tooltip.SetActive(true);
+	//}
 
-	public void HideTooltip()
-	{
-		tooltip.SetActive(false);
-	}
+	//public void HideTooltip()
+	//{
+	//	tooltip.SetActive(false);
+	//}
 
 	// The UI will call these methods whenever its value changed, manually or directly.
 	public void SetThemeVolume(float value)
@@ -103,28 +97,28 @@ public class Options : MonoBehaviour
 		PlayerPrefs.SetInt("Graphics", index);
 	}
 
-	public void SetFullscreen(bool isFullsreen)
-	{
-		if (isFullsreen)
-			resolution.value = fullScreenIndex;
-		else if (!resolution.interactable)
-			resolution.value = 7;  // Return to default resolution only once time.
+	//public void SetFullscreen(bool isFullsreen)
+	//{
+	//	if (isFullsreen)
+	//		resolution.value = fullScreenIndex;
+	//	else if (!resolution.interactable)
+	//		resolution.value = 7;  // Return to default resolution only once time.
 
-		resolution.interactable = !isFullsreen;  // The user can't change to other resolutions if the game is fullscreen.
-		tooltipButton.SetActive(isFullsreen);
+	//	resolution.interactable = !isFullsreen;  // The user can't change to other resolutions if the game is fullscreen.
+	//	tooltipButton.SetActive(isFullsreen);
 
-		Screen.fullScreen = isFullsreen;
+	//	Screen.fullScreen = isFullsreen;
 		
-		PlayerPrefs.SetInt("Fullscreen", isFullsreen ? 1 : 0);  // If true then return 1, else 0.
-	}
+	//	PlayerPrefs.SetInt("Fullscreen", isFullsreen ? 1 : 0);  // If true then return 1, else 0.
+	//}
 
-	public void SetResolution(int index)
-	{
-		Resolution selectedResolution = Menu.resolutionArr[index];
-		Screen.SetResolution(selectedResolution.width, selectedResolution.height, Screen.fullScreen);
+	//public void SetResolution(int index)
+	//{
+	//	Resolution selectedResolution = Menu.resolutionArr[index];
+	//	Screen.SetResolution(selectedResolution.width, selectedResolution.height, Screen.fullScreen);
 
-		PlayerPrefs.SetInt("Resolution", index);
-	}
+	//	PlayerPrefs.SetInt("Resolution", index);
+	//}
 
 	public void ResetSelected()
 	{
@@ -141,8 +135,8 @@ public class Options : MonoBehaviour
 		// Perform reset.
 		PlayerPrefs.SetInt("HighScore", 0);
 
-		PlayerPrefs.SetInt("Fullscreen", 0);
-		PlayerPrefs.SetInt("Resolution", 7);
+		//PlayerPrefs.SetInt("Fullscreen", 0);
+		//PlayerPrefs.SetInt("Resolution", 7);
 		
 		PlayerPrefs.SetInt("Graphics", 2);
 		PlayerPrefs.SetFloat("ControlSensitivity", 40f);
@@ -155,35 +149,35 @@ public class Options : MonoBehaviour
 
 		graphics.value = PlayerPrefs.GetInt("Graphics", 2);
 		
-		resolution.value = PlayerPrefs.GetInt("Resolution", 7);
+		//resolution.value = PlayerPrefs.GetInt("Resolution", 7);
 		
-		fullscreen.isOn = PlayerPrefs.GetInt("Fullscreen", 0) == 1 ? true : false;
+		//fullscreen.isOn = PlayerPrefs.GetInt("Fullscreen", 0) == 1 ? true : false;
 
 		// Refresh the dropdowns, just in case.
 		graphics.RefreshShownValue();
-		resolution.RefreshShownValue();
+		//resolution.RefreshShownValue();
 
 		// Deactivate the reset panel.
 		confirmResetPanel.SetActive(false);
-		tooltip.SetActive(false);
+		//tooltip.SetActive(false);
 	}
 
-	void SetUpResoDropdown()
-	{
-		resolution.ClearOptions();  // Clear all the placeholder options.
+	//private void SetUpResoDropdown()
+	//{
+	//	resolution.ClearOptions();  // Clear all the placeholder options.
 		
-		List<string> options = new List<string>();
+	//	List<string> options = new List<string>();
 
-		for (int i = 0; i < Menu.resolutionArr.Length; i++)
-		{
-			string option = Menu.resolutionArr[i].width + " x " + Menu.resolutionArr[i].height;
+	//	for (int i = 0; i < Menu.resolutionArr.Length; i++)
+	//	{
+	//		string option = Menu.resolutionArr[i].width + " x " + Menu.resolutionArr[i].height;
 			
-			if (!options.Contains(option))
-				options.Add(option);
-		}
+	//		if (!options.Contains(option))
+	//			options.Add(option);
+	//	}
 
-		// Update the dropdown each time the options scene is loaded.
-		resolution.AddOptions(options);
-		fullScreenIndex = options.Count - 1;  // Last index.
-	}
+	//	// Update the dropdown each time the options scene is loaded.
+	//	resolution.AddOptions(options);
+	//	fullScreenIndex = options.Count - 1;  // Last index.
+	//}
 }

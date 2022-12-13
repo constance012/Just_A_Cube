@@ -8,11 +8,13 @@ public class LongClickButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
 	public UnityEvent onHold;
 	
-
 	void Update()
 	{
 		if (touchDown && onHold != null)
+		{
 			onHold.Invoke();
+			Debug.Log("Invoked.");
+		}
 	}
 	public void OnPointerDown(PointerEventData eventData)
 	{
