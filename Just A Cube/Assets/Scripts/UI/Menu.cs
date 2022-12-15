@@ -19,6 +19,7 @@ public class Menu : MonoBehaviour
 		if (!isSet)
 		{
 			//resolutionArr = Screen.resolutions;
+			Application.targetFrameRate = Screen.currentResolution.refreshRate;
 
 			theme = Array.Find(AudioManager.instance.sounds, sound => sound.name == "Theme");
 

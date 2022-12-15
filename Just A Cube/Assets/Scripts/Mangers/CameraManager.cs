@@ -61,7 +61,7 @@ public class CameraManager : MonoBehaviour
 			}
 		}
 
-		if (Time.time > doubleTapEndTime)
+		if (Time.time > doubleTapEndTime || GameManager.isPaused)
 			tapCount = 0;
 	}
 }

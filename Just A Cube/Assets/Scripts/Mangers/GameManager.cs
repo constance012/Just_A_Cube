@@ -113,6 +113,8 @@ public class GameManager : MonoBehaviour
 						case TouchPhase.Moved:
 							touchSwipeDirection = touch.position - touchStartPos;
 							Debug.Log("Touch Direction: " + touchSwipeDirection);
+							//Debug.Log("VSync Count: " + QualitySettings.vSyncCount);
+							//Debug.Log("Target framerate: " + Application.targetFrameRate);
 							break;
 
 						case TouchPhase.Ended:
@@ -121,7 +123,7 @@ public class GameManager : MonoBehaviour
 					}
 			}
 
-			if (!gameHasEnded && !isPaused && directionChosen && touchSwipeDirection.y > 350f)
+			if (!gameHasEnded && !isPaused && directionChosen && touchSwipeDirection.y > 300f)
 				PauseGame();
 		}
 	}
