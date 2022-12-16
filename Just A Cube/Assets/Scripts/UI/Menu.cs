@@ -5,7 +5,7 @@ public class Menu : MonoBehaviour
 {
 	// Static fields.
 	public static Sound theme;
-	//public static Resolution[] resolutionArr;
+	public static Resolution[] resolutionArr;
 
 	public static bool isSet { get; private set; } = false;  // We only need to get the array once when the game started.
 
@@ -18,7 +18,7 @@ public class Menu : MonoBehaviour
 
 		if (!isSet)
 		{
-			//resolutionArr = Screen.resolutions;
+			resolutionArr = Screen.resolutions;
 			Application.targetFrameRate = Screen.currentResolution.refreshRate;
 
 			theme = Array.Find(AudioManager.instance.sounds, sound => sound.name == "Theme");
@@ -43,6 +43,11 @@ public class Menu : MonoBehaviour
 	public void Options()
 	{
 		FindObjectOfType<LoadNextLevel>().Load("Scenes/Options");
+	}
+
+	public void OptionsMobile()
+	{
+		FindObjectOfType<LoadNextLevel>().Load("Scenes/Options Mobile");
 	}
 
 	public void StartGame()

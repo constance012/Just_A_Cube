@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 2645
+  controlID: 102
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 153
+  controlID: 25
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 154
+  controlID: 19
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -187,7 +187,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 234
+    width: 294
     height: 669
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
@@ -211,9 +211,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 234
+    x: 294
     y: 0
-    width: 1233
+    width: 1173
     height: 669
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
@@ -271,8 +271,8 @@ MonoBehaviour:
     y: 0
     width: 453
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -301,7 +301,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-    width: 233
+    width: 293
     height: 648
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -310,9 +310,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: fa5f0000
       m_LastClickedID: 0
-      m_ExpandedIDs: dc97ffff3098ffffb899ffffe099ffff269affff569affff60a5ffffb4a5ffff3ca7ffff64a7ffffaaa7ffffdaa7ffff44b2ffff98b2ffff20b4ffff48b4ffff8eb4ffffbeb4ffffcecbffff22ccffff4accffff72ccffffa8ccffffd6ccffff30cfffff84cfffff0cd1ffff34d1ffff7ad1ffffaad1ffff14d7ffff68d7fffff4d8ffff20d9ffff6ad9ffff9ed9ffffc2dbffff92e7ffff18fbffff
+      m_ExpandedIDs: bc91ffff2a92ffffb0a6ffff4ac0ffff52c0ffff28c3ffffd2c5ffff20cfffff3cd7ffffe0deffff2ce6fffff6e6ffff2cefffffd6f0ffff10f3ffffdcf9ffff18fbfffffc6000000e6100009e670000b0670000906b0000e66b0000f86b0000426c0000786d0000b66d0000c06d0000e66d0000fa6d0000f27300000474000084750000c2750000cc750000f2750000d27c0000dc7c0000ce800000d8800000128100001a81000030810000468100004a8100002a8500003c8500009e850000b08500001c860000408600006c8600007086000046940000509400008a94000092940000be940000c2940000da990000e49900001c9d0000269d0000609d0000689d0000789d0000949d0000989d000028b300003ab300009cb30000aeb30000ccb300001ab4000036b400003eb400006ab400006eb40000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -356,9 +356,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 234
+    x: 294
     y: 73
-    width: 1231
+    width: 1171
     height: 648
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -556,14 +556,14 @@ MonoBehaviour:
   m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 0
   m_SceneLighting: 1
-  m_2DMode: 0
+  m_2DMode: 1
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.19932318, y: 0.31991744, z: 0.6474619}
+    m_Target: {x: 984.3132, y: 535.6762, z: -1.6741912}
     speed: 2
-    m_Value: {x: -0.19932318, y: 0.31991744, z: 0.6474619}
+    m_Value: {x: 984.3132, y: 535.6762, z: -1.6741912}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -592,17 +592,17 @@ MonoBehaviour:
       m_Size: {x: 0, y: 0}
     yGrid:
       m_Fade:
-        m_Target: 1
+        m_Target: 0
         speed: 2
-        m_Value: 1
+        m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
     zGrid:
       m_Fade:
-        m_Target: 0
+        m_Target: 1
         speed: 2
-        m_Value: 0
+        m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
@@ -610,17 +610,17 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.24338545, y: 0.27666584, z: -0.0726536, w: -0.9267977}
+    m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: {x: -0.24338388, y: 0.27666405, z: -0.07265313, w: -0.9267917}
+    m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 6.69028
+    m_Target: 613.86017
     speed: 2
-    m_Value: 6.69028
+    m_Value: 613.86017
   m_Ortho:
-    m_Target: 0
+    m_Target: 1
     speed: 2
-    m_Value: 0
+    m_Value: 1
   m_CameraSettings:
     m_Speed: 1
     m_SpeedNormalized: 0.5
@@ -634,7 +634,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.12866426, y: 0.06599226, z: -0.008580772, w: -0.98945546}
+  m_LastSceneViewRotation: {x: -0.24338545, y: 0.27666584, z: -0.0726536, w: -0.9267977}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -848,21 +848,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: V:\Unity Projects\Just_A_Cube\Just A Cube
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 51}
-    m_SelectedIDs: d65f0000
-    m_LastClickedID: 24534
+    m_SelectedIDs: dc5f0000
+    m_LastClickedID: 24540
     m_ExpandedIDs: 00000000ca5f0000cc5f0000de5f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1095,9 +1095,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 234
+    x: 294
     y: 73
-    width: 1231
+    width: 1171
     height: 648
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -1127,7 +1127,7 @@ MonoBehaviour:
     - UnityEditor.DeviceSimulation.ApplicationSettingsPlugin
     pluginStates:
     - '{}'
-    scale: 52
+    scale: 49
     fitToScreenEnabled: 1
     rotationDegree: 270
     highlightSafeAreaEnabled: 0
