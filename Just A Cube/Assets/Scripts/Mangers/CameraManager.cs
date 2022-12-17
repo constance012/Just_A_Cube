@@ -29,6 +29,8 @@ public class CameraManager : MonoBehaviour
 		CameraSwitcher.Register(cam3);
 
 		CameraSwitcher.SwitchCam();  // Default camera is cam1.
+
+		RenderSettings.fogMode = FogMode.Exponential;
 	}
 
 	private void OnDisable()
@@ -39,6 +41,8 @@ public class CameraManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		RenderSettings.fogDensity = CameraSwitcher.activeCam == cam3 ? .01f : .014f;
+
 		// Double tap the screen with 1 finger to change the camera.
 		if (Input.touchCount == 1)
 		{
