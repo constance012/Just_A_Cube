@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 	// Use FixedUpdate to change stuff related to physics, cuz it's always update every 0.02s.
 	private void FixedUpdate()
 	{
-		player.AddForce(0, 0, forwardForce * Time.deltaTime);
+		player.AddForce(forwardForce * Vector3.forward);
 		//Debug.Log(sidewaysForce);
 
 		//if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
@@ -35,11 +35,17 @@ public class PlayerMovement : MonoBehaviour
 
 	public void OnHoldLeft()
 	{
+		if (!this.enabled)
+			return;
+
 		player.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 	}
 
 	public void OnHoldRight()
 	{
+		if (!this.enabled)
+			return;
+
 		player.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 	}
 }

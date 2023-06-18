@@ -99,6 +99,8 @@ public class Options : MonoBehaviour
 
 	public void SetFullscreen(bool isFullsreen)
 	{
+		Screen.fullScreen = isFullsreen;
+
 		if (isFullsreen)
 			resolution.value = fullScreenIndex;
 		else if (!resolution.interactable)
@@ -106,8 +108,6 @@ public class Options : MonoBehaviour
 
 		resolution.interactable = !isFullsreen;  // The user can't change to other resolutions if the game is fullscreen.
 		tooltipButton.SetActive(isFullsreen);
-
-		Screen.fullScreen = isFullsreen;
 
 		PlayerPrefs.SetInt("Fullscreen", isFullsreen ? 1 : 0);  // If true then return 1, else 0.
 	}
